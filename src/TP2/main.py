@@ -1,10 +1,25 @@
 from datetime import datetime
 import pytz
 import logging
+import sys
+
+
+def get_fichier_sortie_args():
+    if len(sys.argv) > 1:
+        return sys.argv[1]
+    return "traitement.log"
+
+def get_fichier_sortie_env():
+    if len(sys.argv) > 1:
+        return sys.argv[1]
+    return "traitement.log"
+
+def get_fichier_sortie():
+    return get_fichier_sortie_args()
 
 timezone = pytz.timezone('Europe/Paris')
 
-logging.basicConfig(filename=None, encoding='utf-8', level=logging.DEBUG)
+logging.basicConfig(filename="traitement.log", encoding='utf-8', level=logging.DEBUG)
 logging.info("Lancement du traitement")
 logging.debug(f"Demande d'heure sur le timezone : {timezone}")
 
